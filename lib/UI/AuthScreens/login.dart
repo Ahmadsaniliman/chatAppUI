@@ -1,8 +1,8 @@
-import 'package:chatappui/Constant/color.dart';
-import 'package:chatappui/Constant/custom_button.dart';
-import 'package:chatappui/Constant/custom_social_links.dart';
-import 'package:chatappui/Constant/custom_text_field.dart';
-import 'package:chatappui/Constant/size_config.dart';
+import 'package:chapuiapp/Constant/color.dart';
+import 'package:chapuiapp/Constant/custom_button.dart';
+import 'package:chapuiapp/Constant/custom_social_links.dart';
+import 'package:chapuiapp/Constant/custom_text_field.dart';
+import 'package:chapuiapp/Constant/size_config.dart';
 import 'package:flutter/material.dart';
 
 class LogInScreen extends StatefulWidget {
