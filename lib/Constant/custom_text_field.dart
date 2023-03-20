@@ -9,23 +9,25 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.obscureText,
     required this.enableSuggestions,
-    required this.icon,
+    required this.iconData,
   });
 
   final String labelText;
   final TextEditingController controller;
   final bool obscureText;
   final bool enableSuggestions;
-  final Icon icon;
+  final Widget iconData;
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
+      height: 55.0,
       decoration: BoxDecoration(
         color: whiteColor,
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(7.0),
         boxShadow: const [
           BoxShadow(
-            blurRadius: 12.0,
+            blurRadius: 2.0,
             offset: Offset(0, 0),
           )
         ],
@@ -35,12 +37,13 @@ class CustomTextField extends StatelessWidget {
         obscureText: false,
         controller: controller,
         decoration: InputDecoration(
-          labelText: labelText,
-          suffixIcon: Icon(icon as IconData?),
+          hintText: labelText,
+          suffixIcon: iconData,
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-            vertical: getProportionateScreenHeight(10.0),
-          ),
+            contentPadding: EdgeInsets.symmetric(
+              vertical: getProportionateScreenHeight(20.0),
+              horizontal: getProportionateScreenWidth(20.0),
+            ),
         ),
       ),
     );

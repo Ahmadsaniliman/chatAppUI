@@ -13,13 +13,13 @@ class CustomSocialMediaLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: getProportionateScreenHeight(60.0),
-      width: getProportionateScreenWidth(70.0),
+      height: getProportionateScreenHeight(50.0),
+      width: getProportionateScreenWidth(100.0),
       decoration: BoxDecoration(
-        color: appleColor,
+        color: color,
         borderRadius: BorderRadius.circular(15.0),
       ),
-      child: Center(child: Image.asset('assets/icons/Pfad 2591.png')),
+      child: Center(child: Image.asset(image)),
     );
   }
 }

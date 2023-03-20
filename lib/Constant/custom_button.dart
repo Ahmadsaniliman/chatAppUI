@@ -20,8 +20,9 @@ class CustomButton extends StatelessWidget {
         height: getProportionateScreenHeight(70.0),
         width: double.infinity,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0), color: buttonColor),
-        child: Text(text),
+            borderRadius: BorderRadius.circular(10.0), color: buttonColor),
+        child: Center(
+            child: Text(text, style: const TextStyle(color: whiteColor))),
       ),
     );
   }

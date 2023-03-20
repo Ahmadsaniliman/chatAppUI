@@ -12,10 +12,24 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-late final TextEditingController _emailController;
-late final TextEditingController _passwordController;
-
 class _RegisterScreenState extends State<RegisterScreen> {
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -28,120 +42,143 @@ class _RegisterScreenState extends State<RegisterScreen> {
             top: getProportionateScreenHeight(30.0),
             bottom: getProportionateScreenHeight(15.0),
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    EdgeInsets.only(bottom: getProportionateScreenHeight(15.0)),
-                child: const Text(
-                  'Account\nRegisteration',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: getProportionateScreenHeight(20.0),
+                    top: getProportionateScreenHeight(20.0),
+                  ),
+                  child: const Text(
+                    'Account\nRegisteration',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              Form(
-                child: Column(
+                Form(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Email'),
+                      SizedBox(height: getProportionateScreenHeight(5.0)),
+                      CustomTextField(
+                        labelText: 'johndoe@gmail.com',
+                        controller: _emailController,
+                        obscureText: false,
+                        enableSuggestions: true,
+                        iconData: const Icon(Icons.mark_as_unread),
+                        //   icon: const Icon(Icons.mark_as_unread),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(15.0)),
+                      const Text('Password'),
+                      SizedBox(height: getProportionateScreenHeight(5.0)),
+                      CustomTextField(
+                        labelText: '********',
+                        controller: _emailController,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        iconData: const Icon(Icons.visibility),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(15.0)),
+                      const Text('Enter Your Location'),
+                      SizedBox(height: getProportionateScreenHeight(5.0)),
+                      CustomTextField(
+                        labelText: 'Italy',
+                        controller: _emailController,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        iconData: const Icon(Icons.visibility),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(15.0)),
+                      const Text('Enter Your Phone Number'),
+                      SizedBox(height: getProportionateScreenHeight(5.0)),
+                      CustomTextField(
+                        labelText: '+234 9084 5647 4756',
+                        controller: _emailController,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        iconData: const Icon(Icons.visibility),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(15.0)),
+                    ],
+                  ),
+                ),
+                Column(
                   children: [
-                    const Text('Email'),
-                    CustomTextField(
-                      labelText: 'johndoe@gmail.com',
-                      controller: _emailController,
-                      obscureText: false,
-                      enableSuggestions: true,
-                      icon: const Icon(Icons.mark_as_unread),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: getProportionateScreenHeight(10)),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: getProportionateScreenHeight(1),
+                              width: getProportionateScreenWidth(100.0),
+                              color: const Color(0xFF171930),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getProportionateScreenWidth(10)),
+                            child: const Text('Or'),
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: getProportionateScreenHeight(1),
+                              width: getProportionateScreenWidth(100.0),
+                              color: const Color(0xFF171930),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: getProportionateScreenHeight(15.0)),
-                    const Text('Password'),
-                    CustomTextField(
-                      labelText: '********',
-                      controller: _emailController,
-                      obscureText: true,
-                      enableSuggestions: false,
-                      icon: const Icon(Icons.visibility),
+                    //
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        CustomSocialMediaLinks(
+                          image: 'assets/icons/Pfad 2591.png',
+                          color: appleColor,
+                        ),
+                        CustomSocialMediaLinks(
+                          image: 'assets/icons/Pfad 2593.png',
+                          color: facebookColor,
+                        ),
+                        CustomSocialMediaLinks(
+                          image: 'assets/icons/Pfad 2594.png',
+                          color: twitterColor,
+                        ),
+                      ],
                     ),
-                    SizedBox(height: getProportionateScreenHeight(15.0)),
-                    const Text('Enter Your Location'),
-                    CustomTextField(
-                      labelText: 'Italy',
-                      controller: _emailController,
-                      obscureText: true,
-                      enableSuggestions: false,
-                      icon: const Icon(Icons.visibility),
+                    //
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Forgot Password',
+                        style: TextStyle(decoration: TextDecoration.underline),
+                      ),
                     ),
-                    SizedBox(height: getProportionateScreenHeight(15.0)),
-                    const Text('Enter Your Phone Number'),
-                    CustomTextField(
-                      labelText: '+234 9084 5647 4756',
-                      controller: _emailController,
-                      obscureText: true,
-                      enableSuggestions: false,
-                      icon: const Icon(Icons.visibility),
-                    ),
-                    SizedBox(height: getProportionateScreenHeight(15.0)),
                   ],
                 ),
-              ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: getProportionateScreenHeight(5),
-                        width: getProportionateScreenWidth(100.0),
-                        color: const Color(0xFF171930),
-                      ),
-                      const Text('Or'),
-                      Container(
-                        height: getProportionateScreenHeight(5),
-                        width: getProportionateScreenWidth(100.0),
-                        color: const Color(0xFF171930),
-                      ),
-                    ],
-                  ),
-                  //
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      CustomSocialMediaLinks(
-                        image: 'assets/icons/Pfad 2591.png',
-                        color: appleColor,
-                      ),
-                      CustomSocialMediaLinks(
-                        image: 'assets/icons/Pfad 2593.png',
-                        color: facebookColor,
-                      ),
-                      CustomSocialMediaLinks(
-                        image: 'assets/icons/Pfad 2594.png',
-                        color: twitterColor,
-                      ),
-                    ],
-                  ),
-                  //
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Forgot Password',
-                      style: TextStyle(decoration: TextDecoration.underline),
-                    ),
-                  ),
-                ],
-              ),
-              //
-              CustomButton(
-                text: 'Registeration',
-                press: () {},
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Already have an account? Login',
-                  style: TextStyle(decoration: TextDecoration.underline),
+                CustomButton(
+                  text: 'Registeration',
+                  press: () {},
                 ),
-              ),
-            ],
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/login');
+                  },
+                  child: const Text(
+                    'Already have an account? Login',
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

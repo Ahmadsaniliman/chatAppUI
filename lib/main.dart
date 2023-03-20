@@ -1,3 +1,5 @@
+import 'package:chapuiapp/UI/AuthScreens/login.dart';
+import 'package:chapuiapp/UI/AuthScreens/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,17 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const HomePage(),
+      home: const LogInScreen(),
+      routes: {
+        '/register': (context) => const RegisterScreen(),
+        '/login': (context) => const LogInScreen(),
+      },
     );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
