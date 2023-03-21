@@ -1,5 +1,7 @@
 import 'package:chapuiapp/UI/AuthScreens/login.dart';
 import 'package:chapuiapp/UI/AuthScreens/register.dart';
+import 'package:chapuiapp/UI/ChatScreens/chat_screen.dart';
+import 'package:chapuiapp/UI/ChatScreens/community_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const LogInScreen(),
+      home: const CommunityScreen(),
       routes: {
         '/register': (context) => const RegisterScreen(),
         '/login': (context) => const LogInScreen(),
