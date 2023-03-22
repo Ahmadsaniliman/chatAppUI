@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:chapuiapp/Constant/color.dart';
 import 'package:chapuiapp/Constant/size_config.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,15 @@ class CommunitiesTabs extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: backgroundColor,
-      bottomNavigationBar: Container(
-          height: getProportionateScreenHeight(100),
-          width: double.infinity,
-          color: Colors.green),
+//       bottomNavigationBar: AnimatedBottomNavigationBar(
+//     //   icons: iconList,
+//     //   activeIndex: _bottomNavIndex,
+//       gapLocation: GapLocation.center,
+//     //   notchSmoothness: NotchSmoothness.smoothEdge,
+//     //   onTap: (index) => setState(() => _bottomNavIndex = index,
+//       ),
+//       //other params
+//    ),
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.symmetric(
@@ -74,6 +80,7 @@ class CommunitiesTabs extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
         child: Column(
           children: [
+            SizedBox(height: getProportionateScreenHeight(15)),
             Container(
               height: getProportionateScreenHeight(120),
               width: double.infinity,
@@ -84,14 +91,416 @@ class CommunitiesTabs extends StatelessWidget {
                   topRight: Radius.circular(15),
                 ),
               ),
-              child: Stack(
+              child: Row(
                 children: [
-                  Image.asset('assets/images/Group 43 (image).png'),
+                  Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.people),
+                        SizedBox(height: getProportionateScreenHeight(5)),
+                        const Text(
+                          'Got 50 coins',
+                          style: TextStyle(color: buttonColor),
+                        ),
+                        const Text('for your first community'),
+                        SizedBox(height: getProportionateScreenHeight(5)),
+                        Row(
+                          children: [
+                            ...List.generate(
+                              5,
+                              (index) => Container(
+                                margin: const EdgeInsets.only(right: 4.0),
+                                height: getProportionateScreenHeight(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                width: getProportionateScreenWidth(7),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Image.asset('assets/images/Group 43 (image).png', width: 120),
                 ],
               ),
             ),
+            //
+            //
+            //
+            //
+            const PopularCards(),
+            const PopularCard2(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PopularCard2 extends StatelessWidget {
+  const PopularCard2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> demoText = [
+      'All',
+      'Movies',
+      'Arts',
+      'Sports',
+      'Crypto',
+      'Finace',
+      'News',
+      'Health Care',
+      'Science',
+    ];
+    return Padding(
+      padding: EdgeInsets.only(top: getProportionateScreenHeight(15)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Communities by Interests',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: getProportionateScreenHeight(20),
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...List.generate(
+                  demoText.length,
+                  (index) => Padding(
+                    padding:
+                        const EdgeInsets.only(right: 10.0, top: 5, bottom: 8),
+                    child: Text(
+                      demoText[index],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //   SizedBox(height: getProportionateScreenHeight(10)),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(10),
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  width: getProportionateScreenWidth(140),
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: getProportionateScreenHeight(80),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        // child: Image.asset(
+                        //     'assets/images/Rectangle 22 (image).png'),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        'Stars Wars Torrent',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        '14,440 Members',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      Container(
+                        height: getProportionateScreenHeight(30),
+                        width: getProportionateScreenWidth(70),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: backgroundColor,
+                        ),
+                        child: const Center(child: Text('Movies')),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: getProportionateScreenWidth(20)),
+                //
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(10),
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  width: getProportionateScreenWidth(140),
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: getProportionateScreenHeight(80),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        // child: Image.asset(
+                        //     'assets/images/Rectangle 22 (image) (1).png'),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        'Stars Wars Torrent',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        '14,440 Members',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      Container(
+                        height: getProportionateScreenHeight(30),
+                        width: getProportionateScreenWidth(70),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: backgroundColor,
+                        ),
+                        child: const Center(child: Text('Arts')),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: getProportionateScreenWidth(20)),
+                //
+                //
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(10),
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  width: getProportionateScreenWidth(140),
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: getProportionateScreenHeight(80),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        // child: Image.asset(
+                        //     'assets/images/Rectangle 22 (image) (2).png'),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        'Stars Wars Torrent',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        '14,440 Members',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      Container(
+                        height: getProportionateScreenHeight(30),
+                        width: getProportionateScreenWidth(70),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: backgroundColor,
+                        ),
+                        child: const Center(child: Text('Movies')),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PopularCards extends StatelessWidget {
+  const PopularCards({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: getProportionateScreenHeight(10)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'For You',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: getProportionateScreenHeight(20),
+            ),
+          ),
+          SizedBox(height: getProportionateScreenHeight(10)),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(10),
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  width: getProportionateScreenWidth(140),
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: getProportionateScreenHeight(80),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        // child: Expanded(
+                        // //   child: Image.asset(
+                        // //       'assets/images/Rectangle 22 (image).png'),
+                        // ),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        'Stars Wars Torrent',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        '14,440 Members',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      Container(
+                        height: getProportionateScreenHeight(30),
+                        width: getProportionateScreenWidth(70),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: backgroundColor,
+                        ),
+                        child: const Center(child: Text('Movies')),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: getProportionateScreenWidth(20)),
+                //
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(10),
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  width: getProportionateScreenWidth(140),
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: getProportionateScreenHeight(80),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        // child: Image.asset(
+                        //     'assets/images/Rectangle 22 (image) (1).png'),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        'Stars Wars Torrent',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        '14,440 Members',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      Container(
+                        height: getProportionateScreenHeight(30),
+                        width: getProportionateScreenWidth(70),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: backgroundColor,
+                        ),
+                        child: const Center(child: Text('Arts')),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: getProportionateScreenWidth(20)),
+                //
+                //
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(10),
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  width: getProportionateScreenWidth(140),
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: getProportionateScreenHeight(80),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        // child: Image.asset(
+                        //     'assets/images/Rectangle 22 (image) (2).png'),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        'Stars Wars Torrent',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      const Text(
+                        '14,440 Members',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: getProportionateScreenHeight(5)),
+                      Container(
+                        height: getProportionateScreenHeight(30),
+                        width: getProportionateScreenWidth(70),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: backgroundColor,
+                        ),
+                        child: const Center(child: Text('Movies')),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

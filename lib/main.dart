@@ -4,6 +4,7 @@ import 'package:chapuiapp/UI/ChatScreens/chat_screen.dart';
 import 'package:chapuiapp/UI/ChatScreens/communites_tabs.dart';
 import 'package:chapuiapp/UI/ChatScreens/community_screen.dart';
 import 'package:chapuiapp/UI/ChatScreens/community_screen_2.dart';
+import 'package:chapuiapp/UI/ChatScreens/join_comm.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const CommunitiesTabs(),
+      home: const JoinCommunity(),
       routes: {
         '/register': (context) => const RegisterScreen(),
         '/login': (context) => const LogInScreen(),
