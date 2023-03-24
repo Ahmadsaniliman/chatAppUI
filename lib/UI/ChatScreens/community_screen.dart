@@ -84,7 +84,9 @@ class CommunityScreen extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(30)),
             CustomButton(
-              press: () {},
+              press: () {
+                Navigator.of(context).pushNamed('/commscreen2');
+              },
               text: 'Continue',
             ),
             SizedBox(height: getProportionateScreenHeight(5)),

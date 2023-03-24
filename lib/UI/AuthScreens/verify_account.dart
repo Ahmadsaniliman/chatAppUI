@@ -206,7 +206,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
               SizedBox(height: getProportionateScreenHeight(35)),
               CustomButton(
                 text: 'Confirm',
-                press: () {},
+                press: () {
+                  Navigator.of(context).pushNamed('/chatscreen');
+                },
               ),
               TextButton(
                 onPressed: () {},

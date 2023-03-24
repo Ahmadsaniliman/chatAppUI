@@ -1,4 +1,3 @@
-import 'package:chapuiapp/Constant/color.dart';
 import 'package:chapuiapp/Constant/size_config.dart';
 import 'package:flutter/material.dart';
 

@@ -84,10 +84,9 @@ class _LogInScreenState extends State<LogInScreen> {
                         obscureText: true,
                         enableSuggestions: false,
                         iconData: const Icon(
-                          Icons.visibility,
+                          Icons.visibility_off,
                           color: Colors.black,
                         ),
-                        // icon: const Icon(Icons.visibility),
                       ),
                     ],
                   ),
@@ -158,7 +157,9 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
                 CustomButton(
                   text: 'Login',
-                  press: () {},
+                  press: () {
+                    Navigator.of(context).pushNamed('/verify');
+                  },
                 ),
                 TextButton(
                   onPressed: () {

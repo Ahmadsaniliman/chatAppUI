@@ -9,17 +9,65 @@ class CommunitiesTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final iconList = <IconData>[
+      Icons.chat,
+      Icons.call,
+      //   Icons.chat,
+      Icons.people,
+      Icons.menu,
+    ];
+    final textList = <String>[
+      'Chat',
+      'Call',
+      'Communities',
+      'Menu',
+    ];
     return Scaffold(
       backgroundColor: backgroundColor,
-//       bottomNavigationBar: AnimatedBottomNavigationBar(
-//     //   icons: iconList,
-//     //   activeIndex: _bottomNavIndex,
-//       gapLocation: GapLocation.center,
-//     //   notchSmoothness: NotchSmoothness.smoothEdge,
-//     //   onTap: (index) => setState(() => _bottomNavIndex = index,
-//       ),
-//       //other params
-//    ),
+      bottomNavigationBar: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 50,
+            right: 50,
+            child: Container(
+              height: getProportionateScreenHeight(50),
+              width: getProportionateScreenWidth(50),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20), color: buttonColor),
+            ),
+          ),
+          AnimatedBottomNavigationBar.builder(
+              itemCount: iconList.length,
+              tabBuilder: (int index, bool isActive) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      iconList[index],
+                      size: 24,
+                    ),
+                    const SizedBox(height: 4),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        textList[index],
+                        style: const TextStyle(fontSize: 7),
+                      ),
+                    )
+                  ],
+                );
+              },
+              activeIndex: 0,
+              splashSpeedInMilliseconds: 300,
+              notchSmoothness: NotchSmoothness.defaultEdge,
+              gapLocation: GapLocation.center,
+              leftCornerRadius: 0,
+              rightCornerRadius: 0,
+              onTap: (index) {}),
+        ],
+      ),
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.symmetric(
@@ -43,28 +91,32 @@ class CommunitiesTabs extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: getProportionateScreenHeight(30),
-                    width: getProportionateScreenWidth(30),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xFFE5E5E5),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/joincomm');
+                    },
+                    child: Container(
+                      height: getProportionateScreenHeight(35),
+                      width: getProportionateScreenWidth(35),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color(0xFFE5E5E5),
+                      ),
+                      child: const Icon(Icons.people),
                     ),
-                    child: const Icon(Icons.camera),
                   ),
                   SizedBox(
                     width: getProportionateScreenWidth(10.0),
                   ),
                   Container(
-                    height: getProportionateScreenHeight(30),
-                    width: getProportionateScreenWidth(30),
+                    height: getProportionateScreenHeight(35),
+                    width: getProportionateScreenWidth(35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: const Color(0xFFE5E5E5),
                     ),
                     child: const Icon(
-                      Icons.search,
-                      color: Color(0xFFE5E5E5),
+                      Icons.more_vert,
                     ),
                   ),
                 ],
@@ -158,6 +210,7 @@ class PopularCard2 extends StatelessWidget {
       'Health Care',
       'Science',
     ];
+
     return Padding(
       padding: EdgeInsets.only(top: getProportionateScreenHeight(15)),
       child: Column(
@@ -210,8 +263,10 @@ class PopularCard2 extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child: Image.asset(
-                        //     'assets/images/Rectangle 22 (image).png'),
+                        child: Expanded(
+                          child: Image.asset(
+                              'assets/images/Rectangle 22 (image) (1).png'),
+                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       const Text(
@@ -238,6 +293,9 @@ class PopularCard2 extends StatelessWidget {
                 ),
                 SizedBox(width: getProportionateScreenWidth(20)),
                 //
+                //
+                //
+                //
                 Container(
                   padding: EdgeInsets.symmetric(
                     vertical: getProportionateScreenHeight(10),
@@ -255,8 +313,8 @@ class PopularCard2 extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child: Image.asset(
-                        //     'assets/images/Rectangle 22 (image) (1).png'),
+                        child: Image.asset(
+                            'assets/images/Rectangle 22 (image).png'),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       const Text(
@@ -301,8 +359,8 @@ class PopularCard2 extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child: Image.asset(
-                        //     'assets/images/Rectangle 22 (image) (2).png'),
+                        child: Image.asset(
+                            'assets/images/Rectangle 22 (image).png'),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       const Text(
@@ -361,6 +419,7 @@ class PopularCards extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                //
                 Container(
                   padding: EdgeInsets.symmetric(
                     vertical: getProportionateScreenHeight(10),
@@ -378,10 +437,10 @@ class PopularCards extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child: Expanded(
-                        // //   child: Image.asset(
-                        // //       'assets/images/Rectangle 22 (image).png'),
-                        // ),
+                        child: Expanded(
+                          child: Image.asset(
+                              'assets/images/Rectangle 22 (image).png'),
+                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       const Text(
@@ -407,7 +466,6 @@ class PopularCards extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: getProportionateScreenWidth(20)),
-                //
                 Container(
                   padding: EdgeInsets.symmetric(
                     vertical: getProportionateScreenHeight(10),
@@ -425,8 +483,10 @@ class PopularCards extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child: Image.asset(
-                        //     'assets/images/Rectangle 22 (image) (1).png'),
+                        child: Expanded(
+                          child: Image.asset(
+                              'assets/images/Rectangle 22 (image) (1).png'),
+                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       const Text(
@@ -471,8 +531,10 @@ class PopularCards extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        // child: Image.asset(
-                        //     'assets/images/Rectangle 22 (image) (2).png'),
+                        child: Expanded(
+                          child: Image.asset(
+                              'assets/images/Rectangle 22 (image) (1).png'),
+                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(5)),
                       const Text(

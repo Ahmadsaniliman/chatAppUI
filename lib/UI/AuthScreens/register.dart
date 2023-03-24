@@ -15,11 +15,15 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+  late final TextEditingController _locationController;
+  late final TextEditingController _numberController;
 
   @override
   void initState() {
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _locationController = TextEditingController();
+    _numberController = TextEditingController();
     super.initState();
   }
 
@@ -27,6 +31,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _locationController.dispose();
+    _numberController.dispose();
     super.dispose();
   }
 
@@ -79,30 +85,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: getProportionateScreenHeight(5.0)),
                       CustomTextField(
                         labelText: '********',
-                        controller: _emailController,
+                        controller: _passwordController,
                         obscureText: true,
                         enableSuggestions: false,
-                        iconData: const Icon(Icons.visibility),
+                        iconData: const Icon(Icons.visibility_off),
                       ),
                       SizedBox(height: getProportionateScreenHeight(15.0)),
                       const Text('Enter Your Location'),
                       SizedBox(height: getProportionateScreenHeight(5.0)),
                       CustomTextField(
                         labelText: 'Italy',
-                        controller: _emailController,
+                        controller: _locationController,
                         obscureText: true,
                         enableSuggestions: false,
-                        iconData: const Icon(Icons.visibility),
+                        // iconData: const Icon(Icons.visibility),
                       ),
                       SizedBox(height: getProportionateScreenHeight(15.0)),
                       const Text('Enter Your Phone Number'),
                       SizedBox(height: getProportionateScreenHeight(5.0)),
                       CustomTextField(
                         labelText: '+234 9084 5647 4756',
-                        controller: _emailController,
+                        controller: _numberController,
                         obscureText: true,
                         enableSuggestions: false,
-                        iconData: const Icon(Icons.visibility),
+                        // iconData: const Icon(Icons.visibility),
                       ),
                       SizedBox(height: getProportionateScreenHeight(15.0)),
                     ],
@@ -167,14 +173,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 CustomButton(
                   text: 'Registeration',
-                  press: () {},
+                  press: () {
+                    Navigator.of(context).pushNamed('/login');
+                  },
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pushNamed('/login');
                   },
-                  child: const Text(
-                    'Already have an account? Login',
+                  child: const Center(
+                    child: Text(
+                      'Already have an account? Login',
+                    ),
                   ),
                 ),
               ],

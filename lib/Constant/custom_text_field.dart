@@ -9,14 +9,14 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.obscureText,
     required this.enableSuggestions,
-    required this.iconData,
+    this.iconData,
   });
 
   final String labelText;
   final TextEditingController controller;
   final bool obscureText;
   final bool enableSuggestions;
-  final Widget iconData;
+  final Widget? iconData;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,10 +40,10 @@ class CustomTextField extends StatelessWidget {
           hintText: labelText,
           suffixIcon: iconData,
           border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(
-              vertical: getProportionateScreenHeight(20.0),
-              horizontal: getProportionateScreenWidth(20.0),
-            ),
+          contentPadding: EdgeInsets.symmetric(
+            vertical: getProportionateScreenHeight(20.0),
+            horizontal: getProportionateScreenWidth(20.0),
+          ),
         ),
       ),
     );
